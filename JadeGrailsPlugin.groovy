@@ -43,7 +43,20 @@ Brief summary/description of the plugin.
     }
 
     def doWithSpring = {
-        // TODO Implement runtime spring config (optional)
+        jadeTemplateLoader(com.netflix.grails.plugins.jade.GrailsJadeTemplateLoader) {
+            basePath = '/grails-app/views'
+        }
+        jadeConfiguration(de.neuland.jade4j.JadeConfiguration) {
+            prettyPrint = false
+            caching = false
+            templateLoader = ref('jadeTemplateLoader')
+        }
+        jadeViewResolver(com.netflix.grails.plugins.jade.GrailsJadeViewResolver) {
+            prefix = ''
+            suffix = '.jade'
+            configuration = ref('jadeConfiguration')
+            renderExceptions = true
+        }
     }
 
     def doWithDynamicMethods = { ctx ->
