@@ -13,4 +13,8 @@ class TestController {
         flash.message = 'This is a flash message'
     }
 
+    def layout() {
+        render view: 'layoutTest', model: [title: 'Layout Test']
+    }
+
 }
