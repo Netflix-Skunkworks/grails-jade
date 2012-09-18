@@ -47,7 +47,7 @@ Brief summary/description of the plugin.
             basePath = '/grails-app/views'
         }
         jadeConfiguration(de.neuland.jade4j.JadeConfiguration) {
-            prettyPrint = false
+            prettyPrint = true
             caching = false
             templateLoader = ref('jadeTemplateLoader')
         }
