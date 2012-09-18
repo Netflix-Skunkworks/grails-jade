@@ -56,6 +56,7 @@ Brief summary/description of the plugin.
             suffix = '.jade'
             configuration = ref('jadeConfiguration')
             renderExceptions = true
+            order = 10
         }
     }
 
