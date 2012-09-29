@@ -21,6 +21,7 @@ class GrailsJadeTemplateLoader extends SpringTemplateLoader implements Applicati
         }else{
             //in a production deployment, so just use the applicationContext
             setResourceLoader((ResourceLoader)applicationContext);
+            setBasePath("/WEB-INF" + getBasePath());
         }
         super.init();
     }
