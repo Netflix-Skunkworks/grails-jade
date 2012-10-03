@@ -3,4 +3,6 @@ html
   head
     title= pageName
   body
+    if session.getValue('test')
+      div test
     .test #{team} of #{city}
