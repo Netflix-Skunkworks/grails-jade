@@ -1,10 +1,8 @@
 package com.netflix.grails.plugins.jade;
 
 import de.neuland.jade4j.spring.view.JadeViewResolver;
-import java.util.Locale;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.springframework.web.servlet.View;
 import org.springframework.web.servlet.view.AbstractUrlBasedView;
 
 class GrailsJadeViewResolver extends JadeViewResolver {
@@ -17,4 +15,10 @@ class GrailsJadeViewResolver extends JadeViewResolver {
         log.debug("buildView view url is " + viewName);
         return view;
     }
+
+    @Override
+    protected Class requiredViewClass() {
+        return GrailsJadeView.class;
+    }
+
 }
