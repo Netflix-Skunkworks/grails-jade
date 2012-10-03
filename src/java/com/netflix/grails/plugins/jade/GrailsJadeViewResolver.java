@@ -10,15 +10,11 @@ import org.springframework.web.servlet.view.AbstractUrlBasedView;
 class GrailsJadeViewResolver extends JadeViewResolver {
     private final Log log = LogFactory.getLog(GrailsJadeViewResolver.class);
 
-    public View loadView(String viewName, Locale locale) throws Exception{
-        log.error("here");
-        return super.loadView(viewName, locale);
-    }
-
+    @Override
     public AbstractUrlBasedView buildView(String viewName) throws Exception{
-        log.error("starting buildView with " + viewName);
+        log.debug("starting buildView with " + viewName);
         AbstractUrlBasedView view = super.buildView(viewName);
-        log.error("buildView view url is " + view);
+        log.debug("buildView view url is " + viewName);
         return view;
     }
 }
