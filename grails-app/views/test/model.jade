@@ -3,6 +3,6 @@ html
   head
     title= pageName
   body
-    if session.getValue('test')
-      div test
+    if session.test
+      div #{session.test}
     .test #{team} of #{city}

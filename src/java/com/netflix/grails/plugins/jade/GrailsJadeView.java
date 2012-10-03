@@ -11,12 +11,13 @@ class GrailsJadeView extends JadeView {
 
     @Override
     protected void renderMergedOutputModel(Map<String, Object> model, HttpServletRequest request, HttpServletResponse response) throws Exception {
+        model.put("request", WebObjectConverter.toMap(request));
+        model.put("session", WebObjectConverter.toMap(request.getSession()));
+        model.put("application", WebObjectConverter.toMap(request.getServletContext()));
         GrailsWebRequest webRequest = WebUtils.retrieveGrailsWebRequest();
         model.put("params", webRequest.getParams());
-        model.put("request", webRequest);
-        model.put("session", webRequest.getSession());
-        model.put("application", webRequest.getServletContext());
         model.put("flash", webRequest.getAttributes().getFlashScope(request));
         super.renderMergedOutputModel(model, request, response);
     }
+
 }
