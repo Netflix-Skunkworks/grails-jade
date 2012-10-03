@@ -43,19 +43,24 @@ Brief summary/description of the plugin.
     }
 
     def doWithSpring = {
+        def jadeConfig = application.mergedConfig.asMap(true).grails.plugin.jade
         jadeTemplateLoader(com.netflix.grails.plugins.jade.GrailsJadeTemplateLoader) {
             basePath = '/grails-app/views'
         }
         jadeConfiguration(de.neuland.jade4j.JadeConfiguration) {
-            prettyPrint = true
-            caching = false
+            prettyPrint = jadeConfig.prettyPrint
+            caching = jadeConfig.caching
+            if (jadeConfig.filter) {
+                filter = jadeConfig.filter
+            }
+            sharedVariables = jadeConfig.sharedVariables
             templateLoader = ref('jadeTemplateLoader')
         }
         jadeViewResolver(com.netflix.grails.plugins.jade.GrailsJadeViewResolver) {
             prefix = ''
             suffix = '.jade'
             configuration = ref('jadeConfiguration')
-            renderExceptions = true
+            renderExceptions = jadeConfig.renderExceptions
             order = 10
         }
     }
