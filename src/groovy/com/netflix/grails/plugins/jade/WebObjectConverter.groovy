@@ -6,7 +6,7 @@ package com.netflix.grails.plugins.jade
 class WebObjectConverter {
 
     static Map<String, Object> toMap(webObject) {
-        (webObject.attributeNames as List).collectEntries { attributeName ->
+        (webObject.attributeNames.toList()).collectEntries { attributeName ->
             [attributeName, webObject.getAttribute(attributeName)]
         }
     }
