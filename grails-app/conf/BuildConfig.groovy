@@ -15,8 +15,8 @@ grails.project.dependency.resolution = {
         mavenRepo "https://github.com/neuland/spring-jade4j/raw/master/releases"
     }
     dependencies {
-        compile "de.neuland:jade4j:0.2.17"
-        compile "de.neuland:spring-jade4j:0.2.2"
+        compile "de.neuland:jade4j:0.3.4"
+        compile "de.neuland:spring-jade4j:0.3.0"
     }
 
     plugins {
