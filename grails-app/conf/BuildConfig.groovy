@@ -15,12 +15,8 @@ grails.project.dependency.resolution = {
         mavenRepo "https://github.com/neuland/spring-jade4j/raw/master/releases"
     }
     dependencies {
-        compile("de.neuland:jade4j:0.3.8") {
-            excludes 'concurrentlinkedhashmap-lru'
-        }
-        compile("de.neuland:spring-jade4j:0.3.1") {
-            excludes 'concurrentlinkedhashmap-lru'
-        }
+        compile "de.neuland:jade4j:0.3.4"
+        compile "de.neuland:spring-jade4j:0.3.0"
     }
 
     plugins {
