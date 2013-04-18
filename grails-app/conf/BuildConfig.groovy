@@ -11,8 +11,9 @@ grails.project.dependency.resolution = {
     log "warn" // log level of Ivy resolver, either 'error', 'warn', 'info', 'debug' or 'verbose'
     repositories {
         grailsCentral()
-        mavenRepo "https://github.com/neuland/jade4j/raw/master/releases"
-        mavenRepo "https://github.com/neuland/spring-jade4j/raw/master/releases"
+        mavenCentral()
+        mavenRepo "https://raw.github.com/neuland/jade4j/master/releases"
+        mavenRepo "https://raw.github.com/neuland/spring-jade4j/master/releases"
     }
     dependencies {
         compile "de.neuland:jade4j:0.3.4"
