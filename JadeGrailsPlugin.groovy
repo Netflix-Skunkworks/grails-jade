@@ -7,8 +7,11 @@ class JadeGrailsPlugin {
     def dependsOn = [:]
     // resources that are excluded from plugin packaging
     def pluginExcludes = [
-        "grails-app/views/**/*",
-        "grails-app/controllers/**/*"
+            "grails-app/views/**/*",
+            "grails-app/controllers/**/*",
+            "grails-app/domain/**/*",
+            "web-app/**/*",
+            "lib/**/*"
     ]
 
     // TODO Fill in these fields
@@ -29,17 +32,13 @@ class JadeGrailsPlugin {
 //    def organization = [ name: "My Company", url: "http://www.my-company.com/" ]
 
     // Any additional developers beyond the author specified above.
-//    def developers = [ [ name: "Joe Bloggs", email: "joe@bloggs.net" ]]
+    def developers = [[name: "Christian Oestreich", email: "acetrike@gmail.com"]]
 
     // Location of the plugin's issue tracker.
 //    def issueManagement = [ system: "JIRA", url: "http://jira.grails.org/browse/GPMYPLUGIN" ]
 
     // Online location of the plugin's browseable source code.
 //    def scm = [ url: "http://svn.codehaus.org/grails-plugins/" ]
-
-    def doWithWebDescriptor = { xml ->
-        // TODO Implement additions to web.xml (optional), this event occurs before
-    }
 
     def doWithSpring = {
         def jadeConfig = application.mergedConfig.asMap(true).grails.plugin.jade
@@ -49,9 +48,6 @@ class JadeGrailsPlugin {
         jadeConfiguration(de.neuland.jade4j.JadeConfiguration) {
             prettyPrint = jadeConfig.prettyPrint
             caching = jadeConfig.caching
-            if (jadeConfig.filter) {
-                filter = jadeConfig.filter
-            }
             sharedVariables = jadeConfig.sharedVariables
             templateLoader = ref('jadeTemplateLoader')
         }
@@ -64,26 +60,12 @@ class JadeGrailsPlugin {
         }
     }
 
-    def doWithDynamicMethods = { ctx ->
-        // TODO Implement registering dynamic methods to classes (optional)
-    }
-
     def doWithApplicationContext = { applicationContext ->
-        // TODO Implement post initialization spring config (optional)
-    }
-
-    def onChange = { event ->
-        // TODO Implement code that is executed when any artefact that this plugin is
-        // watching is modified and reloaded. The event contains: event.source,
-        // event.application, event.manager, event.ctx, and event.plugin.
-    }
-
-    def onConfigChange = { event ->
-        // TODO Implement code that is executed when the project configuration changes.
-        // The event is the same as for 'onChange'.
-    }
-
-    def onShutdown = { event ->
-        // TODO Implement code that is executed when the application shuts down (optional)
+        def config = application.mergedConfig.asMap(true).grails.plugin.jade
+        de.neuland.jade4j.JadeConfiguration jadeConfiguration = applicationContext.getBean("jadeConfiguration")
+        config?.filters?.each { k, v ->
+            log.debug "Adding grails-jade filter for $k"
+            jadeConfiguration?.setFilter(k, v)
+        }
     }
 }
