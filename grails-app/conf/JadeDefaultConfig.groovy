@@ -10,8 +10,8 @@ grails {
 			/* Render exceptions in view or fail silently. */
 			renderExceptions = true
 
-			/* Additional filter for embedding different content types in a template, such as markdown, coffeescript */
-			filter = null
+			/* Additional filters for embedding different content types in a template, such as markdown, coffeescript */
+			filters = [:]
 
 			/* Default objects available to all templates. */
 			sharedVariables = [:]

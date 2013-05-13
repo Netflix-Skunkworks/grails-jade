@@ -1,0 +1,9 @@
+extends ../layouts/other
+
+block content
+    #bodytext Empty
+
+    :coffeescript
+        updateContent = -> document.getElementById('bodytext').innerHTML = 'Not Empty'
+
+        do updateContent
