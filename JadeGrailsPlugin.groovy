@@ -35,10 +35,10 @@ class JadeGrailsPlugin {
     def developers = [[name: "Christian Oestreich", email: "acetrike@gmail.com"]]
 
     // Location of the plugin's issue tracker.
-//    def issueManagement = [ system: "JIRA", url: "http://jira.grails.org/browse/GPMYPLUGIN" ]
+    def issueManagement = [ system: "github", url: "https://github.com/Netflix-Skunkworks/grails-jade/issues" ]
 
     // Online location of the plugin's browseable source code.
-//    def scm = [ url: "http://svn.codehaus.org/grails-plugins/" ]
+    def scm = [ url: "https://github.com/Netflix-Skunkworks/grails-jade" ]
 
     def doWithSpring = {
         def jadeConfig = application.mergedConfig.asMap(true).grails.plugin.jade
