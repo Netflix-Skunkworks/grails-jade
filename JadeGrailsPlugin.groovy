@@ -21,7 +21,7 @@ class JadeGrailsPlugin {
     def description = 'Support for rendering Jade templates as views.'
 
     // URL to the plugin's documentation
-    def documentation = "http://grails.org/plugin/jade"
+    def documentation = "https://github.com/Netflix-Skunkworks/grails-jade"
 
     // Extra (optional) plugin metadata
 
