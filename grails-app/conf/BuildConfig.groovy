@@ -51,6 +51,8 @@ grails.project.dependency.resolution = {
     }
 
     plugins {
+        runtime ":hibernate:$grailsVersion"
+
         compile ':plugin-config:0.1.8'
 
         //uncomment this to release - conflicts with GEB... *sigh*
@@ -58,8 +60,7 @@ grails.project.dependency.resolution = {
         //     export = false
         // }
 
-        build(":build-test-data:2.0.5",
-              ":tomcat:$grailsVersion",
+        build(":tomcat:$grailsVersion",
               ":rest-client-builder:1.0.2") {
             export = false
         }

@@ -23,7 +23,6 @@ class PersonController {
     }
 
     def list() {
-        Person.build(name: 'Person ' + UUID.randomUUID())
         render view: 'list', model: [persons: Person.list()]
     }
 
