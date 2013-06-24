@@ -51,7 +51,9 @@ grails.project.dependency.resolution = {
     }
 
     plugins {
-        runtime ":hibernate:$grailsVersion"
+        runtime(":hibernate:$grailsVersion") {
+            export = false
+        }
 
         compile ':plugin-config:0.1.8'
 
